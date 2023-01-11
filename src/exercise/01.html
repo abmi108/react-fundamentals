@@ -19,9 +19,11 @@
 <!--   📜 https://developer.mozilla.org/en-US/docs/Web/API/ParentNode/append -->
 
 <body>
-  <div id="root"></div>
   <script type="module">
-    const rootElement = document.getElementById('root')
+    const bodyElement = document.getElementsByTagName('body')[0]
+    const rootElement = document.createElement('div')
+    rootElement.className += ' root'
+    bodyElement.append(rootElement)
     const element = document.createElement('div')
     element.append('Hello World')
     element.className += ' container'
