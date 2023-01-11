@@ -26,13 +26,36 @@
       /* 💯 This is only the first step to making actual React components. The rest is in the extra credit! */
     }
 
-    function Message({children}) {
-      return <div className="message">{children}</div>
+    function Message({subject, greeting}) {
+      return (
+        <div className="message">
+          {greeting}, {subject}
+        </div>
+      )
     }
+
+    const propTypes = {
+      string(props, subject, Message) {
+        if (typeof props[subject] !== 'string') {
+          return new Error('Subject is not a string')
+        }
+      },
+      string(props, greeting) {
+        if (typeof props[greeting] !== 'string') {
+          return new Error('Greeting is not a string')
+        }
+      },
+    }
+
+    Message.propTypes = {
+      subject: propTypes.string,
+      greeting: propTypes.string,
+    }
+
     const element = (
       <div className="container">
-        <Message> Hello World </Message>
-        <Message> Goodbye World </Message>
+        <Message greeting="123" subject="World" />
+        <Message greeting="Goodbye" subject="World" />
       </div>
     )
 
