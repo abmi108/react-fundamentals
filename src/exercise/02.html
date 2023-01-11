@@ -20,10 +20,15 @@
     // 🐨 Please re-implement the regular document.createElement code above
     // with these React API calls
     // 💰 The example in the markdown file should be a good hint for you.
-    const rootElement = document.getElementById('root')
     const element = React.createElement('div', {
       className: 'container',
-      children: 'Hello World',
+      children: [
+        React.createElement('span', {children: 'Hello'}),
+        React.createElement('span', {children: 'World'}),
+      ],
     })
+    const rootElement = document.getElementById('root')
+
+    ReactDOM.createRoot(rootElement).render(element)
   </script>
 </body>
